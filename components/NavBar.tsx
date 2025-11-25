@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -13,18 +14,27 @@ const links = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  const toggleMenu = () => setOpen((prev) => !prev);
+  const closeMenu = () => setOpen(false);
 
   return (
     <header className="site-header">
       <div className="container header-inner">
         <div className="logo">
-          <Link href="/">PL&amp;CO</Link>
+          <Link href="/" onClick={closeMenu}>
+            PL&amp;CO
+          </Link>
         </div>
+
+        {/* Desktop nav */}
         <nav className="main-nav">
           {links.map((link) => {
             const active =
               pathname === link.href ||
               (link.href !== "/" && pathname.startsWith(link.href));
+
             return (
               <Link
                 key={link.href}
@@ -36,7 +46,41 @@ export default function Navbar() {
             );
           })}
         </nav>
+
+        {/* Mobile toggle */}
+        <button
+          className={open ? "nav-toggle open" : "nav-toggle"}
+          type="button"
+          aria-label="Apri il menu"
+          onClick={toggleMenu}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
+
+      {/* Mobile dropdown */}
+      <nav className={open ? "mobile-nav open" : "mobile-nav"}>
+        <div className="container mobile-nav-inner">
+          {links.map((link) => {
+            const active =
+              pathname === link.href ||
+              (link.href !== "/" && pathname.startsWith(link.href));
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={active ? "mobile-nav-link active" : "mobile-nav-link"}
+                onClick={closeMenu}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     </header>
   );
 }

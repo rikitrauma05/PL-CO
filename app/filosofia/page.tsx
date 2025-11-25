@@ -12,57 +12,67 @@ export default function FilosofiaPage() {
         </div>
       </section>
 
+      {/* Ruolo e competenze */}
       <section className="section">
         <div className="container two-columns">
-          <div>
-            <h2>Il ruolo del Dottore Commercialista</h2>
+          <div className="stack page-text">
+            <h2>Un ruolo sempre più centrale</h2>
+
             <p>
-              Il Dottore Commercialista del nuovo millennio è chiamato a
-              svolgere funzioni molteplici: contabile, revisore, sindaco,
-              consulente in ambito fiscale e finanziario, referente per
-              l&apos;assistenza al contribuente e interlocutore per aziende,
-              istituti di credito e Amministrazione finanziaria.
+              Il Dottore Commercialista del nuovo millennio svolge funzioni
+              molteplici: contabile, revisore, sindaco, consulente fiscale e
+              finanziario, referente per l&apos;assistenza al contribuente e
+              interlocutore per aziende, istituti di credito e Amministrazione
+              finanziaria.
             </p>
+
             <p>
-              Questa varietà di compiti richiede conoscenze aggiornate,
-              flessibilità, capacità di analisi e un costante impegno nella
-              gestione dei rapporti con i diversi soggetti coinvolti nella vita
-              dell&apos;impresa.
+              Questa complessità richiede una visione ampia dell&apos;impresa e
+              la capacità di affiancare il cliente non solo negli adempimenti,
+              ma anche nelle scelte strategiche.
             </p>
           </div>
 
-          <div>
+          <div className="page-highlight stack">
             <h2>Competenze e responsabilità</h2>
+
             <p>
               L&apos;attività del commercialista richiede competenza,
-              informazioni aggiornate, esperienza, strumenti adeguati e tempo da
-              dedicare allo studio e alla gestione dei casi concreti. Si tratta
-              di una professione che comporta responsabilità crescenti e che
-              deve essere esercitata con rigore e attenzione.
+              informazioni aggiornate, esperienza, strumenti adeguati e tempo
+              dedicato allo studio dei casi concreti.
             </p>
+
             <p>
-              Tutte queste qualità si riflettono nei servizi che lo studio
-              offre ai propri clienti, con l&apos;obiettivo di garantire un
-              supporto affidabile e completo.
+              Si tratta di una professione che comporta responsabilità
+              crescenti e che deve essere esercitata con rigore, attenzione e
+              senso etico, perché le soluzioni proposte incidono direttamente
+              sulla vita delle imprese e delle persone.
             </p>
           </div>
         </div>
       </section>
 
+      {/* Ricerca e innovazione */}
       <section className="section section-alt">
         <div className="container">
-          <h2>Ricerca, innovazione e crescita del cliente</h2>
-          <p>
-            Lo studio si propone di coniugare il servizio tradizionale di
-            consulenza con un approccio orientato alla ricerca, all&apos;
-            innovazione e all&apos;aggiornamento professionale continuo. La
-            crescita del cliente è posta al centro del percorso di consulenza.
-          </p>
-          <p style={{ marginTop: "0.75rem" }}>
-            L&apos;obiettivo è offrire un servizio completo e strutturato e
-            creare una vera sinergia con il destinatario, accompagnandolo nelle
-            scelte strategiche e nella gestione quotidiana dell&apos;attività.
-          </p>
+          <div className="stack page-text">
+            <h2>Ricerca, innovazione e crescita del cliente</h2>
+
+            <p>
+              Lo studio si propone di coniugare il servizio tradizionale di
+              consulenza con un approccio orientato alla ricerca,
+              all&apos;innovazione e all&apos;aggiornamento professionale
+              continuo.
+            </p>
+
+            <p>
+              La crescita del cliente è al centro del percorso di consulenza:
+              l&apos;obiettivo è offrire un servizio completo e strutturato,
+              creando una vera sinergia con l&apos;impresa e accompagnandola
+              nelle decisioni strategiche e nella gestione quotidiana della
+              propria attività.
+            </p>
+          </div>
         </div>
       </section>
     </div>

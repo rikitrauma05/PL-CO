@@ -9,13 +9,17 @@
   padding: 0;
 }
 
+/* Body */
 html,
 body {
   height: 100%;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  color: #111827;
+  color: #0f172a;
   background: #f3f4f6;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 /* Layout root */
@@ -29,30 +33,39 @@ main {
   flex: 1;
 }
 
-/* Variabili di colore */
+/* Variabili */
 :root {
   --color-bg: #f3f4f6;
   --color-surface: #ffffff;
   --color-primary: #2563eb;
   --color-primary-soft: #dbeafe;
   --color-border: #e5e7eb;
-  --color-muted: #6b7280;
+ --color-muted: #1f2937; /* grigio molto scuro, quasi nero */
+
+  --shadow-soft: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-strong: 0 18px 40px rgba(15, 23, 42, 0.2);
 }
 
-/* Contenitore centrale */
+/* Container */
 .container {
-  max-width: 1100px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* Header / navbar */
+/* HEADER / NAVBAR */
+
 .site-header {
-  background: #ffffff;
-  border-bottom: 1px solid var(--color-border);
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 40;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.95),
+      rgba(255, 255, 255, 0.88)
+    );
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
 }
 
 .header-inner {
@@ -60,30 +73,37 @@ main {
   align-items: center;
   justify-content: space-between;
   height: 64px;
+  gap: 1rem;
 }
 
 .logo a {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1.25rem;
-  color: #111827;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   text-decoration: none;
+  color: #111827;
 }
 
+/* Desktop nav */
 .main-nav {
   display: flex;
-  gap: 1.25rem;
+  gap: 1.4rem;
 }
 
 .nav-link {
   text-decoration: none;
   font-size: 0.95rem;
   color: var(--color-muted);
-  padding-bottom: 2px;
+  padding-bottom: 4px;
   border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease;
 }
 
 .nav-link:hover {
   color: #111827;
+  transform: translateY(-1px);
 }
 
 .nav-link.active {
@@ -91,21 +111,104 @@ main {
   border-bottom-color: var(--color-primary);
 }
 
-/* Pagine */
+/* Toggle mobile (hamburger) */
+.nav-toggle {
+  display: none;
+  position: relative;
+  width: 32px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: #111827;
+  transition: transform 0.15s ease, opacity 0.15s ease, top 0.15s ease,
+    bottom 0.15s ease;
+}
+
+.nav-toggle span:nth-child(1) {
+  top: 4px;
+}
+
+.nav-toggle span:nth-child(2) {
+  top: 11px;
+}
+
+.nav-toggle span:nth-child(3) {
+  bottom: 4px;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  top: 11px;
+  transform: rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  bottom: 11px;
+  transform: rotate(-45deg);
+}
+
+/* Mobile nav dropdown */
+.mobile-nav {
+  display: none;
+  background: rgba(248, 250, 252, 0.98);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-nav-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.75rem 0 0.9rem;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding: 0.3rem 0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: #111111;
+}
+.mobile-nav-link:hover {
+  background: rgba(229, 231, 235, 0.8);
+  padding-left: 0.25rem;
+}
+
+.mobile-nav-link.active {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* PAGE LAYOUT */
+
 .page {
   background: var(--color-bg);
 }
 
 .page-home {
-  background: linear-gradient(
-    135deg,
-    #eff6ff 0%,
-    var(--color-bg) 45%,
-    #ffffff 100%
-  );
+  background: radial-gradient(
+      circle at top left,
+      #e0edff 0,
+      transparent 55%
+    ),
+    radial-gradient(circle at bottom right, #fee2e2 0, transparent 55%),
+    var(--color-bg);
 }
 
 /* HERO */
+
 .hero {
   padding: 3.5rem 0 3rem;
 }
@@ -118,28 +221,30 @@ main {
 }
 
 .hero-text h1 {
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   margin-bottom: 1rem;
 }
 
 .hero-text p {
   font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--color-muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.6rem;
 }
 
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.8rem;
 }
 
-/* Pulsanti */
+/* Buttons */
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.7rem 1.4rem;
+  padding: 0.7rem 1.5rem;
   border-radius: 999px;
   font-size: 0.95rem;
   text-decoration: none;
@@ -152,45 +257,34 @@ main {
 .btn.primary {
   background: var(--color-primary);
   color: #ffffff;
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
-  border-color: transparent;
+  box-shadow: var(--shadow-strong);
 }
 
 .btn.primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 22px 45px rgba(37, 99, 235, 0.4);
 }
 
 .btn.secondary {
   background: #ffffff;
   color: #111827;
   border-color: var(--color-border);
+  box-shadow: var(--shadow-soft);
 }
 
 .btn.secondary:hover {
   background: #f9fafb;
 }
 
-.btn.link-btn {
-  background: transparent;
-  color: var(--color-primary);
-  border-color: transparent;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.btn.link-btn:hover {
-  text-decoration: underline;
-}
-
 /* HERO CAROUSEL */
+
 .hero-carousel {
   position: relative;
   overflow: hidden;
-  border-radius: 1.25rem;
+  border-radius: 1.4rem;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+  box-shadow: var(--shadow-strong);
   height: 260px;
 }
 
@@ -214,11 +308,12 @@ main {
 }
 
 /* Controlli slider */
+
 .hero-control {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   border: none;
   width: 32px;
   height: 32px;
@@ -246,6 +341,7 @@ main {
 }
 
 /* Pallini slider */
+
 .hero-dots {
   position: absolute;
   bottom: 10px;
@@ -270,10 +366,16 @@ main {
   background: #ffffff;
 }
 
-/* Page hero per pagine interne */
+/* PAGE HERO (pagine interne) */
+
 .page-hero {
   padding: 3rem 0 2rem;
-  background: #e5e7eb40;
+  background: linear-gradient(
+    to bottom,
+    #e5edff 0,
+    #f9fafb 40%,
+    transparent 100%
+  );
 }
 
 .page-hero h1 {
@@ -283,9 +385,11 @@ main {
 
 .page-hero p {
   color: var(--color-muted);
+  max-width: 620px;
 }
 
-/* Sezioni generiche */
+/* SECTION GENERICHE */
+
 .section {
   padding: 3rem 0;
 }
@@ -302,9 +406,11 @@ main {
 .section-intro {
   color: var(--color-muted);
   margin-bottom: 2rem;
+  max-width: 720px;
 }
 
-/* Griglia di card */
+/* CARD GRID */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -318,31 +424,41 @@ main {
 .card {
   background: var(--color-surface);
   border-radius: 1rem;
-  padding: 1.5rem;
+  padding: 1.6rem;
   border: 1px solid var(--color-border);
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+  border-color: #cbd5f5;
 }
 
 .card h3,
 .card h2 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .card p {
   color: var(--color-muted);
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
-/* Layout a due colonne */
+/* TWO COLUMNS */
+
 .two-columns {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
-  gap: 2rem;
-  align-items: start;
+  gap: 2.2rem;
+  align-items: flex-start;
 }
 
-/* Lista check */
+/* LISTE */
+
 .list-check {
   list-style: none;
 }
@@ -363,14 +479,16 @@ main {
   color: var(--color-primary);
 }
 
-/* Layout contatti */
+/* CONTATTI */
+
 .contact-layout {
   display: grid;
   grid-template-columns: 1.1fr 1.1fr;
   gap: 2rem;
 }
 
-/* Form contatti */
+/* FORM CONTATTI */
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -401,7 +519,8 @@ main {
   background: #ffffff;
 }
 
-/* Footer */
+/* FOOTER */
+
 .site-footer {
   padding: 1.6rem 0;
   border-top: 1px solid var(--color-border);
@@ -433,14 +552,20 @@ main {
   text-decoration: underline;
 }
 
-/* Responsività */
+/* RESPONSIVE */
+
+/* Tablet */
 @media (max-width: 900px) {
   .hero-inner {
     grid-template-columns: 1fr;
   }
 
   .hero {
-    padding-top: 2.5rem;
+    padding: 2.6rem 0 2.4rem;
+  }
+
+  .hero-carousel {
+    height: 220px;
   }
 
   .card-grid {
@@ -460,29 +585,89 @@ main {
   }
 }
 
+/* Mobile */
 @media (max-width: 640px) {
   .header-inner {
-    flex-direction: column;
-    justify-content: center;
-    height: auto;
-    padding: 0.6rem 0;
-    gap: 0.5rem;
+    height: 60px;
   }
 
   .main-nav {
-    flex-wrap: wrap;
-    justify-content: center;
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  .mobile-nav.open {
+    display: block;
+  }
+
+  .hero-text h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero-text p {
+    font-size: 0.98rem;
+  }
+
+  .hero-carousel {
+    height: 200px;
+    margin-top: 0.5rem;
   }
 
   .card-grid {
     grid-template-columns: 1fr;
   }
 
-  .hero-text h1 {
-    font-size: 2rem;
+  .section {
+    padding: 2.4rem 0;
   }
 
-  .hero-carousel {
-    height: 220px;
+  .site-footer {
+    padding: 1.3rem 0;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
+/* --- Migliorie pagine testuali (Chi siamo / Filosofia) --- */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.page-text {
+  max-width: 65ch;
+  font-size: 0.97rem;
+  line-height: 1.8;
+  color: var(--color-muted);
+}
+
+.page-text strong {
+  color: #0f172a;
+}
+
+.page-highlight {
+  background: var(--color-surface);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+.page-highlight h2 {
+  margin-bottom: 0.75rem;
+}
+
