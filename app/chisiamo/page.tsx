@@ -5,8 +5,8 @@ export default function ChiSiamoPage() {
         <div className="container">
           <h1>Chi siamo</h1>
           <p>
-            {/* Qui inseriremo il sottotitolo esatto preso dagli screenshot */}
-            La realtà professionale dedicata allo sviluppo di persone e idee.
+            Studio professionale nato a Codogno, specializzato nella consulenza
+            al settore agricolo e nella gestione tributaria e societaria.
           </p>
         </div>
       </section>
@@ -14,24 +14,45 @@ export default function ChiSiamoPage() {
       <section className="section">
         <div className="container two-columns">
           <div>
-            <h2>La nostra storia</h2>
+            <h2>La storia dello studio</h2>
             <p>
-              Testo placeholder in attesa del contenuto esatto dagli screen:
-              PL&CO nasce dall’esigenza di creare un ambiente professionale dinamico,
-              accogliente e orientato alla crescita personale e lavorativa.
+              PL&amp;CO nasce nel 2016 a Codogno come studio di dottori
+              commercialisti e centro CAF Do.C. Nel tempo ha sviluppato una
+              forte specializzazione nel mondo agricolo, offrendo consulenze di
+              carattere tributario, societario, giuslavoristico e di
+              organizzazione aziendale.
             </p>
             <p>
-              Offriamo spazi, servizi e supporto per trasformare idee in
-              opportunità reali.
+              L&apos;attività si svolge sia direttamente sia in collaborazione
+              con società di servizi collegate, con l&apos;obiettivo di
+              garantire un supporto completo e qualificato ai clienti.
+            </p>
+            <p>
+              Grazie a una lunga esperienza nelle problematiche del settore
+              agricolo, lo studio ha curato numerose operazioni straordinarie e
+              diversi passaggi generazionali, accompagnando le imprese in fasi
+              delicate di trasformazione e crescita.
+            </p>
+            <p>
+              Lo studio è centro CAF Do.C., a conferma del ruolo di riferimento
+              nell&apos;assistenza fiscale e nella gestione degli adempimenti
+              per contribuenti e imprese.
             </p>
           </div>
 
           <div>
-            <h2>Il nostro spazio</h2>
+            <h2>Collaborazioni e ricerca</h2>
             <p>
-              Un ambiente moderno e funzionale, progettato per favorire
-              collaborazione, concentrazione e creatività. Il testo reale
-              verrà inserito dagli screenshot.
+              Dal 2019 PL&amp;CO collabora con SISTEMA RATIO – Centro Studi
+              Castelli Srl, realtà di riferimento nell&apos;approfondimento
+              dottrinale e nell&apos;aggiornamento professionale.
+            </p>
+            <p>
+              Lo studio coordina l&apos;attività scientifica della rivista{" "}
+              <strong>Ratio Agricoltura</strong> e della circolare settimanale{" "}
+              <strong>Agricoltura News</strong>, contribuendo alla diffusione di
+              contenuti tecnici e di attualità per operatori e professionisti
+              del settore.
             </p>
           </div>
         </div>
